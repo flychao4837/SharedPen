@@ -72,8 +72,8 @@ class App extends Component {
       case 'indent': this.sharedPen.indent(); break
       case 'unindent': this.sharedPen.unindent(); break
 
-      case 'link': alert('TODO: Insert Link'); break
-      case 'image': alert('TODO: Insert Image'); break
+      case 'link': this.sharedPen.insertLink(); break
+      case 'image': this.sharedPen.insertImage(); break
 
       case 'format': this.sharedPen.format(); break
       case 'clear-format': this.sharedPen.clearFormat(); break

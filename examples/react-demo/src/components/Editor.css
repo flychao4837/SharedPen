@@ -17,8 +17,8 @@
 :global(.sharedpen-wrapper) {
   box-shadow: 0 0 0 0.75pt #d1d1d1, 0 0 3pt 0.75pt #ccc;
   background: #fff;
-  margin: 6pt;
-  padding: 96px;
+  margin: 20px;
+  padding: 32px;
   padding-bottom: 66px;
 }
 :global(.CodeMirror) {
