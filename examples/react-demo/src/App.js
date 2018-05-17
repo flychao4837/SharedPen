@@ -7,6 +7,7 @@ import Toolbox from './components/Toolbox'
 class App extends Component {
   constructor(props) {
     super(props)
+    this.onloadAll = 0
     // init state
     this.state = {
       // collaborative clients
@@ -37,6 +38,9 @@ class App extends Component {
       this.setState({clients})
     })
     this.sharedPen.on('realtimeTextAttrsChanged', (attrs) => {
+      if(!this.onloadAll){
+        this.sharedPen.cm.refresh() //第一次加载进来的图片表格等没有完整占位，导致高度计算错误，需要刷新codeMirror的高度值
+      }
       this.setState({attrs})
     })
     this.sharedPen.on('undoStatesChanged', (undoStates) => {
@@ -80,23 +84,11 @@ class App extends Component {
       default: break
     }
   }
-  _onClickExplore(e) {
-    console.log('--TODO Explore--')
-    alert(`SharedPen 富文本协同编辑器现阶段仍在开发中，发现BUG或者对此项目感兴趣的朋友欢迎联系我一起交流 🤝
-      QQ：1012520397
-      Mail: yingshandeng@gmail.com
-      GitHub: https://github.com/yingshandeng/Sharedpen`)
-  }
   render() {
     return (
       <div className={styles.app}>
         <Toolbox {...this.state} onExecCommand={(c, v) => this.onExecCommand(c, v)}/>
         <Editor textareaRef={el => this.textarea = el} />
-
-        <button className={styles.explore} onClick={e => this._onClickExplore(e)}>
-          <div className={styles.exploreIcon}></div>
-          <span className={styles.exploreInfo}>Explore</span>
-        </button>
       </div>
     )
   }
