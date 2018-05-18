@@ -78,6 +78,7 @@ class App extends Component {
 
       case 'link': this.sharedPen.insertLink(); break
       case 'image': this.sharedPen.insertImage(); break
+      // case 'table': this.sharedPen.insertTable(); break
 
       case 'format': this.sharedPen.format(); break
       case 'clear-format': this.sharedPen.clearFormat(); break
